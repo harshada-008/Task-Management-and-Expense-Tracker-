@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "067e4840-0c9b-4274-b21a-d806a5c3e4c2",
+		"name": "Expense Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39679333",
+		"_collection_link": "https://celebal-9337.postman.co/workspace/Expense~6fa946d0-b812-4fe2-9245-0bca93d49ff4/collection/39679333-067e4840-0c9b-4274-b21a-d806a5c3e4c2?action=share&source=collection_link&creator=39679333"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "POST http://localhost:3000/api/auth/register",
+					"protocol": "POST http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2RkMTYwZDA4NTJmZTg4OWE3MTA5OCIsImlhdCI6MTc1MzA3NjgzMn0.sQLu4ZLvD7MobTO5Z7i8HXo2SgB-cJqy-2KW7F8Jgc4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Design UI\",\r\n  \"description\": \"Build dashboard UI\",\r\n  \"deadline\": \"2025-07-25\",\r\n  \"assignee\": \"harshada\",\r\n  \"status\": \"in-progress\",\r\n  \"category\": \"Design\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2RkMTYwZDA4NTJmZTg4OWE3MTA5OCIsImlhdCI6MTc1MzA3NjgzMn0.sQLu4ZLvD7MobTO5Z7i8HXo2SgB-cJqy-2KW7F8Jgc4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expense",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2RkMTYwZDA4NTJmZTg4OWE3MTA5OCIsImlhdCI6MTc1MzA3NjgzMn0.sQLu4ZLvD7MobTO5Z7i8HXo2SgB-cJqy-2KW7F8Jgc4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 1000,\r\n  \"category\": \"Software\",\r\n  \"description\": \"Adobe subscription\",\r\n  \"date\": \"2025-07-20\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Expense",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"harshadamali\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
