@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Task & Expense Manager</title>
+  <script src="js/dashboard.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
+  <style>
+    body {
+      background-image: url('images/pexels-abdghat-1631677.jpg'); /* ✅ Use relative web path */
+      background-size: cover;
+      background-position: center;
+    }
+    .backdrop {
+      backdrop-filter: blur(10px);
+      background-color: rgba(190, 216, 218, 0.6);
+    }
+    .dark .backdrop {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition duration-500 ease-in-out">
+
+  <!-- Dark Mode Toggle -->
+  <div class="absolute top-4 right-6 z-50">
+    <label class="flex items-center space-x-2 cursor-pointer text-sm">
+      <span>🌙 Dark Mode</span>
+      <input type="checkbox" onclick="toggleDarkMode()" class="form-checkbox h-4 w-4">
+    </label>
+  </div>
+
+  <!-- Page Overlay -->
+  <div class="min-h-screen backdrop p-4">
+    <div class="flex h-screen">
+
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white dark:bg-gray-800 shadow-md flex flex-col p-4 rounded-lg">
+        <h1 class="text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400">MyApp</h1>
+        <nav class="space-y-4">
+          <a href="#" class="text-blue-600 dark:text-blue-400 font-semibold">Dashboard</a>
+          <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400">Tasks</a>
+          <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400">Expenses</a>
+          <button onclick="logout()" class="text-red-500 hover:underline mt-8">Logout</button>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-semibold">Welcome, <span id="username">User</span></h2>
+        </div>
+
+        <!-- Grid for Tasks & Expenses -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <!-- Tasks Section -->
+          <section class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow transition duration-300">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Tasks</h3>
+              <button onclick="openTaskModal()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">+ Add Task</button>
+            </div>
+            <div id="taskList" class="space-y-3">
+              <!-- Tasks will be inserted here -->
+            </div>
+          </section>
+
+          <!-- Expenses Section -->
+          <section class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow transition duration-300">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Expenses</h3>
+              <button onclick="openExpenseModal()" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">+ Add Expense</button>
+            </div>
+            <div id="expenseList" class="space-y-3">
+              <!-- Expenses will be inserted here -->
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h3 class="text-xl font-semibold mb-4">Add Task</h3>
+        <form id="taskForm" class="space-y-3">
+          <input type="text" id="taskTitle" placeholder="Title" required class="w-full p-2 border rounded text-black">
+          <textarea id="taskDescription" placeholder="Description" class="w-full p-2 border rounded text-black"></textarea>
+          <input type="date" id="taskDeadline" required class="w-full p-2 border rounded text-black">
+          <input type="text" id="taskCategory" placeholder="Category" class="w-full p-2 border rounded text-black">
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add</button>
+          <button type="button" onclick="closeTaskModal()" class="ml-2 text-gray-500 hover:underline">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Expense Modal -->
+    <div id="expenseModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h3 class="text-xl font-semibold mb-4">Add Expense</h3>
+        <form id="expenseForm" class="space-y-3">
+          <input type="text" id="expenseTitle" placeholder="Title" required class="w-full p-2 border rounded text-black">
+          <input type="number" id="expenseAmount" placeholder="Amount" required class="w-full p-2 border rounded text-black">
+          <input type="date" id="expenseDate" required class="w-full p-2 border rounded text-black">
+          <input type="text" id="expenseCategory" placeholder="Category" class="w-full p-2 border rounded text-black">
+          <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add</button>
+          <button type="button" onclick="closeExpenseModal()" class="ml-2 text-gray-500 hover:underline">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
